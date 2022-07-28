@@ -1,0 +1,6 @@
+.sidebar_content{
+    height: 100vh;
+    max-width: 225px;
+    background: greenyellow;
+    position: relative;
+}
