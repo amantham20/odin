@@ -1,6 +1,8 @@
 .sidebar_content{
     height: 100vh;
-    max-width: 225px;
-    background: greenyellow;
+    /* max-width: 225px; */
+    background: var(--primary);
+    border-right: 3px solid var(--secondary);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     position: relative;
 }

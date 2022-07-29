@@ -1,0 +1,43 @@
+.mainContent{
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: left;
+    /* margin: 20px 20px 20px 20px; */
+    background-color: #072d25;
+    border: 2px solid var(--secondary);
+    /* border-radius: 15px; */
+}
+
+.mainContentHeading{
+    margin-left: 25px;
+    margin-top: 25px;
+}
+
+.courseList{
+    display: flex;
+    flex-direction: row;
+    /* overflow: scroll; */
+}
+
+.courseListItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 30px;
+    border: 2px solid var(--secondary);
+    background: var(--primary);
+    box-shadow: 5px 10px 30px 3px rgba(0, 0, 0, 0.509);
+    border-radius: 15px;
+    padding: 10px 10px;
+}
+
+.courseListItem img{
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+

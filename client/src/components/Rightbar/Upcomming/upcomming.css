@@ -1,0 +1,20 @@
+.upcomming_item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: var(--primary);
+    border-radius: 5px;
+    border: var(--secondary) 2px solid;
+    box-shadow: 5px 10px 10px 0px rgba(0, 0, 0, 0.509);
+    margin: 20px 10px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.Upcomming_title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 20px;
+}

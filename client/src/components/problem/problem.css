@@ -1,0 +1,21 @@
+.problemPage{
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    scroll-behavior: auto;
+    background: #072D25;
+}
+
+.problemo{
+    padding: 10px 15px;
+    border: 1px solid var(--secondary);
+    overflow : scroll;
+    height: 100vh;
+    background: var(--primary);
+}
+
+.editorthingy{
+    height:100%;
+    width:100%;
+    min-height:100%;
+    min-width:100%;
+}

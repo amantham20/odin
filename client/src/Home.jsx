@@ -1,0 +1,1 @@
+// page that apprends to the user when they visit the home page

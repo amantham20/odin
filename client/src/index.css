@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 :root{
-  --primary: darkblue;
+  --primary: #103E34;
+  --secondary: #1A453B;
+  --cream: #FFFAF2;
   --white: #fff;
 }
 
@@ -18,8 +20,13 @@
 html{
   background: var(--primary);
   scroll-behavior: smooth;
+  overflow: hidden;
 }
 
 body{
   font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+  color: white;
 }

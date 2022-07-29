@@ -1,13 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
 
-import Sidebar from './components/Sidebar/Sidebar';
+
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Main from './Main';
+import Course from './Course';
+import Problem from './components/problem/problem';
 
 function App() {
   return (
-    <div className="App">
-      <Sidebar />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/course/:id" element={<Course />} />
+        <Route path="/problem/:id" element={<Problem />} />
+      </Routes>
+    </Router>
   );
 }
 
