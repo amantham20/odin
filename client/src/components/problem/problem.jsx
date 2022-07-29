@@ -75,7 +75,12 @@ class MOEditor extends React.Component {
 
   componentDidMount() {
       const editor_model = monaco.editor.createModel(this.props.InitCode, this.props.Language);
-      this.monaco_editor = monaco.editor.create(this.editor_div.current, this.props.editorOptions);
+      // this.monaco_editor = monaco.editor.create(this.editor_div.current, this.props.editorOptions);
+      this.monaco_editor = monaco.editor.create(this.editor_div.current, {
+        value: this.props.InitCode,
+        language: this.props.Language,
+        automaticLayout: true // <<== the important part
+   });
       monaco.editor.defineTheme('Green', this.props.Theme);
       monaco.editor.setTheme('Green');
       this.monaco_editor.setModel(editor_model);

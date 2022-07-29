@@ -1,6 +1,6 @@
 .problemPage{
     display: grid;
-    grid-template-columns: 0.7fr 1fr 0.5fr;
+    grid-template-columns: 0.5fr 0.8fr 0.5fr;
     scroll-behavior: auto;
     background: #072D25;
 }
@@ -22,7 +22,7 @@
 .editor{
     /* position: absolute; */
     /* width: 100%; */
-    min-width: 500px;
+    /* min-width: 500px; */
     margin: 0;
     height: 100%;
     z-index: 100;
