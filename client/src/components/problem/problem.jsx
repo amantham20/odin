@@ -5,14 +5,16 @@ import file from '../../assets/sample.md'
 
 import Theme from 'monaco-themes/themes/monoindustrial.json'
 
-import Editor from "@monaco-editor/react";
+// import Editor from "@monaco-editor/react";
 import ReactResizeDetector from 'react-resize-detector';
-import MonacoEditor from 'react-monaco-editor';
+// import MonacoEditor from 'react-monaco-editor';
 
 import * as monaco from 'monaco-editor';
 
 import './markdown.css'
 import './problem.css'
+
+import rehypeRaw from 'rehype-raw';
 
 
 
@@ -40,7 +42,7 @@ const Problem = () => {
     <div className='problemPage'>
       <div className='problemo'>
         <h1>Problems</h1>
-        <ReactMarkdown className='markdown-body' children={MarkdownData}/>
+        <ReactMarkdown className='markdown-body' rehypePlugins={[rehypeRaw]} children={MarkdownData}/>
       </div>
       <div className='codearea'>
         <div className='editor'>
