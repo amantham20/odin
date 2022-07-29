@@ -3,6 +3,8 @@ import ReactMarkdown from 'react-markdown'
 
 import file from '../../assets/sample.md'
 
+import Theme from 'monaco-themes/themes/monoindustrial.json'
+
 import Editor from "@monaco-editor/react";
 import ReactResizeDetector from 'react-resize-detector';
 import MonacoEditor from 'react-monaco-editor';
@@ -12,11 +14,9 @@ import * as monaco from 'monaco-editor';
 import './markdown.css'
 import './problem.css'
 
-// import 'https://sindresorhus.com/github-markdown-css/github-markdown.css'
+
 
 const Problem = () => {
-
-  
 
   const [MarkdownData, setMarkdownData] = React.useState("");
 
@@ -43,13 +43,18 @@ const Problem = () => {
         <ReactMarkdown className='markdown-body' children={MarkdownData}/>
       </div>
       <div className='codearea'>
-      <div className='editor'>
-
-
-        <MOEditor editorOptions={editorOptions}/>
-
-
+        <div className='editor'>
+          <MOEditor editorOptions={editorOptions} Theme={Theme} Language="cpp" InitCode="//Hey There this is aman"/>
+        </div>
       </div>
+      <div className='RightSideBar'>
+        <div className='TestCases'>
+          <h1>Test Cases</h1>
+          <div className='testCase1'>TestCase1</div>
+          <div className='testCase2'>TestCase2</div>
+          <div className='testCase3'>TestCase3</div>
+          
+        </div>
       </div>
     </div>
   )
@@ -69,8 +74,10 @@ class MOEditor extends React.Component {
   }
 
   componentDidMount() {
-      const editor_model = monaco.editor.createModel('#Hey There this is aman', 'python');
+      const editor_model = monaco.editor.createModel(this.props.InitCode, this.props.Language);
       this.monaco_editor = monaco.editor.create(this.editor_div.current, this.props.editorOptions);
+      monaco.editor.defineTheme('Green', this.props.Theme);
+      monaco.editor.setTheme('Green');
       this.monaco_editor.setModel(editor_model);
   }
 
