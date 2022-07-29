@@ -1,6 +1,6 @@
 .problemPage{
     display: grid;
-    grid-template-columns: 0.5fr 1fr;
+    grid-template-columns: 1fr 1fr;
     scroll-behavior: auto;
     background: #072D25;
 }
@@ -11,11 +11,25 @@
     overflow : scroll;
     height: 100vh;
     background: var(--primary);
+    min-width: 400px;
+}
+.codearea{
+    background: white;
+    padding: 10px;
+    right: 0px;
 }
 
-.editorthingy{
-    height:100%;
-    width:100%;
-    min-height:100%;
-    min-width:100%;
+.editor{
+    /* position: absolute; */
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    z-index: 100;
+    background: var(--primary);
+}
+.editor2{
+    /* left: 0; */
+    margin: 0;
+    right: 0;
+    width: 100%;
 }
