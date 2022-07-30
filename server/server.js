@@ -26,12 +26,20 @@ app.post('/problemo/', (req, res) => {
     };
 
     PythonShell.run('Test.py', options, function (err, results) {
-        if (err) throw err;
+        if (err) {
+            console.log(err);
+            res.json({testCaseResult: "Failed", err: err});
+        }
+        else{
+            res.json({testCaseResult: results[0]});
+
+        }
         // results is an array consisting of messages collected during execution
-        console.log('results: %j', results);
+        // console.log('results: %j', results);
+        // res.send(results);
     });
     
-    res.send('Success');
+    // res.send('Success');
     }
 );
 

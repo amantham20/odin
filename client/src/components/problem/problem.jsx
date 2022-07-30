@@ -25,12 +25,21 @@ const Problem = () => {
   const [MarkdownData, setMarkdownData] = React.useState("");
   const [EditorData, setEditorData] = React.useState("");
 
+  
+
+  
+  // const [testCases, setTestCases] = React.useState([]);
+
+  // const InitCode = "#Hey There this is aman \ndef twosum(a, b):\n\treturn a + b";
+
+  const initCode = "#Hey There this is aman \ndef twosum(arr, target):\n\tprint(arr,target)\n\tpass"
   React.useEffect(() => {
     fetch(file)
     .then((r) => r.text())
     .then(text  => {
       setMarkdownData(text);
     })
+    setEditorData(initCode);
   }, []);
 
   const submitCode = () => {
@@ -54,7 +63,7 @@ const Problem = () => {
           <MOEditor 
           Theme={Theme} 
           Language="python" 
-          InitCode="#Hey There this is aman \ndef twosum(a, b):\n\treturn a + b"
+          InitCode={initCode}
           setEditorData={setEditorData}
           />
         </div>

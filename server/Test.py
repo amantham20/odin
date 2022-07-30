@@ -2,7 +2,6 @@
 from twosum import *
 
 print(twosum([1, 2, 3], 4) == (0, 2))
-# print(twosum(1,2) == 3)
 # assert two_sum_problem([1, 2, 3], 4) == (0, 2)
 # assert two_sum_problem([1234, 5678, 9012], 14690) == (1, 2)
 # assert two_sum_problem([2, 2, 3], 4) in [(0, 1), (1, 0)]
