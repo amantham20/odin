@@ -5,6 +5,10 @@
   --secondary: #1A453B;
   --cream: #FFFAF2;
   --white: #fff;
+  --color-white: #fff;
+  --color-black: #000;
+  --transition: all 400ms ease;
+
 }
 
 *{
@@ -29,4 +33,26 @@ body{
 
 h1, h2, h3, h4, h5, h6{
   color: white;
+}
+
+.btn {
+  width: max-content;
+  display: inline-block;
+  color: var(--color-white);
+  padding: 0.75rem 1.2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 1px solid var(--color-white);
+  transition: var(--transition);
+}
+
+.btn:hover {
+  background: var(--color-white);
+  color: var(--color-black);
+  border-color: transparent;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
 }

@@ -9,6 +9,8 @@ import Theme from 'monaco-themes/themes/monoindustrial.json'
 import ReactResizeDetector from 'react-resize-detector';
 // import MonacoEditor from 'react-monaco-editor';
 
+import axios from 'axios';
+
 import * as monaco from 'monaco-editor';
 
 import './markdown.css'
@@ -21,6 +23,7 @@ import rehypeRaw from 'rehype-raw';
 const Problem = () => {
 
   const [MarkdownData, setMarkdownData] = React.useState("");
+  const [EditorData, setEditorData] = React.useState("");
 
   React.useEffect(() => {
     fetch(file)
@@ -30,13 +33,15 @@ const Problem = () => {
     })
   }, []);
 
-  const editorOptions =  {
-      minimap: {
-        enabled: false
-      },
-      selectOnLineNumbers: true,
-      wordWrap: 'on'
-    };
+  const submitCode = () => {
+    console.log(EditorData);
+    axios.post('http://localhost:3001/problemo/', {
+      code: EditorData
+    }).then(res => {
+      console.log(res);
+    })
+  }
+
 
   return (
     <div className='problemPage'>
@@ -46,7 +51,12 @@ const Problem = () => {
       </div>
       <div className='codearea'>
         <div className='editor'>
-          <MOEditor editorOptions={editorOptions} Theme={Theme} Language="cpp" InitCode="//Hey There this is aman"/>
+          <MOEditor 
+          Theme={Theme} 
+          Language="python" 
+          InitCode="#Hey There this is aman \ndef twosum(a, b):\n\treturn a + b"
+          setEditorData={setEditorData}
+          />
         </div>
       </div>
       <div className='RightSideBar'>
@@ -55,6 +65,10 @@ const Problem = () => {
           <div className='testCase1'>TestCase1</div>
           <div className='testCase2'>TestCase2</div>
           <div className='testCase3'>TestCase3</div>
+
+          <br />
+
+          <div className='btn btn-primary' onClick={submitCode}>Submit</div>
           
         </div>
       </div>
@@ -73,19 +87,35 @@ class MOEditor extends React.Component {
       this.editor_div = React.createRef()
 
       this.handle_rezise = this.handle_rezise.bind(this);
+
+      
   }
 
   componentDidMount() {
       const editor_model = monaco.editor.createModel(this.props.InitCode, this.props.Language);
+
       // this.monaco_editor = monaco.editor.create(this.editor_div.current, this.props.editorOptions);
+
       this.monaco_editor = monaco.editor.create(this.editor_div.current, {
         value: this.props.InitCode,
         language: this.props.Language,
+        fontSize: "15px",
+        minimap: {
+          enabled: false
+        },
+        selectOnLineNumbers: true,
+        wordWrap: 'on',
         automaticLayout: true // <<== the important part
    });
       monaco.editor.defineTheme('Green', this.props.Theme);
       monaco.editor.setTheme('Green');
       this.monaco_editor.setModel(editor_model);
+
+      this.monaco_editor.onDidChangeModelContent(e => {
+        this.props.setEditorData(this.monaco_editor.getValue());
+        // console.log(this.monaco_editor.getValue());
+      }
+      )
   }
 
   componentWillUnmount() {
