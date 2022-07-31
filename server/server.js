@@ -23,20 +23,20 @@ app.post('/problemo/', (req, res) => {
     let options = {
         mode: 'text',
         pythonOptions: ['-u'], // get print results in real-time
+        // scriptPath: './twosum.py',
     };
+
+
 
     PythonShell.run('Test.py', options, function (err, results) {
         if (err) {
             console.log(err);
-            res.json({testCaseResult: "Failed", err: err});
+            res.json({testCaseResult: "Failed", output: err.traceback});
         }
         else{
-            res.json({testCaseResult: results[0]});
+            res.json({testCaseResult: "Passed", output: results});
 
         }
-        // results is an array consisting of messages collected during execution
-        // console.log('results: %j', results);
-        // res.send(results);
     });
     
     // res.send('Success');

@@ -28,7 +28,11 @@ const Problem = () => {
   
 
   
-  // const [testCases, setTestCases] = React.useState([]);
+  const [testCases, setTestCases] = React.useState({
+    testCaseResult: "Notrun",
+    output: "",
+  });
+  // const [testCasesData, setTestCasesData] = React.useState([]);
 
   // const InitCode = "#Hey There this is aman \ndef twosum(a, b):\n\treturn a + b";
 
@@ -47,7 +51,9 @@ const Problem = () => {
     axios.post('http://localhost:3001/problemo/', {
       code: EditorData
     }).then(res => {
-      console.log(res);
+      console.log(res.data);
+      setTestCases(res.data);
+      // setTestCasesData(res.data.testCasesData);
     })
   }
 
@@ -69,11 +75,17 @@ const Problem = () => {
         </div>
       </div>
       <div className='RightSideBar'>
-        <div className='TestCases'>
+        <div className='TestCases markdown-body'>
           <h1>Test Cases</h1>
-          <div className='testCase1'>TestCase1</div>
-          <div className='testCase2'>TestCase2</div>
-          <div className='testCase3'>TestCase3</div>
+          {/* {testCases.map((testCase, index) => {
+            return (<div key={index}>
+              <h2>{testCase.testCaseResult}</h2>
+              <p>{testCase.output}</p>
+              </div>)
+          }
+          )} */}
+          <h2>{testCases.testCaseResult === "Passed"? "👍 Passed" : testCases.testCaseResult === "Notrun" ? "XX Notrun XX" : " -- Failed -- "}</h2>
+          <pre class>{testCases.output}</pre>
 
           <br />
 

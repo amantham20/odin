@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Page404 from './components/404page/404';
 
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -12,9 +11,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/course/:id" element={<Course />} />
-        <Route path="/problem/:id" element={<Problem />} />
+        <Route exact path="/" element={<Main />} />
+        <Route exact path="/course/:id" element={<Course />} />
+        <Route exact path="/problem/twosum" element={<Problem />} />
+        {/* 404 page */}
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </Router>
   );
